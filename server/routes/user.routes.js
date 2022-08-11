@@ -2,8 +2,9 @@ let mongoose = require('mongoose'),
     express = require('express'),
     router = express.Router();
 let user = require('../models/user-schema');
+const bcrypt = require('bcrypt')
 
-router.route('/create').post((req, res, next) => {
+router.route('/create').post(async (req, res, next) => {
     user.create(req.body, (error, data) => {
         if (error) {
             return next(error)

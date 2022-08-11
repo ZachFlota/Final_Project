@@ -4,6 +4,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import CreateUser from './components/create-user.component'
 import Users from './components/users.component'
+import Login from './components/login-form'
 
 
 function App() {
@@ -36,6 +37,11 @@ function App() {
                     Users List
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to={'/login'}>
+                    Login
+                  </Link>
+                </li>
               </ul>
             </div>
           </nav>
@@ -47,6 +53,7 @@ function App() {
                 <Route exact path="/" element={<CreateUser />} />
                 <Route path="/create-user" element={<CreateUser />} />
                 <Route path="/users" element={<Users />} />
+                <Route path="/login" element={<Login />} />
               </Routes>
             </div>
           </div>

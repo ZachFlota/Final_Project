@@ -6,6 +6,9 @@ let userSchema = new Schema({
     },
     email: {
         type: String
+    },
+    password: {
+        type: String
     }
 }, {
         collection: 'users'

@@ -6,10 +6,12 @@ export default class CreateUser extends Component {
         super(props)
         this.onChangeUserName = this.onChangeUserName.bind(this);
         this.onChangeUserEmail = this.onChangeUserEmail.bind(this);
+        this.onChangeUserPassword = this.onChangeUserPassword.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.state = {
             name: '',
-            email: ''
+            email: '',
+            password: ''
         }
     }
     onChangeUserName(e) {
@@ -18,11 +20,15 @@ export default class CreateUser extends Component {
     onChangeUserEmail(e) {
         this.setState({ email: e.target.value })
     }
+    onChangeUserPassword(e) {
+        this.setState({ password: e.target.value })
+    }
     onSubmit(e) {
         e.preventDefault()
         const userObject = {
             name: this.state.name,
-            email: this.state.email
+            email: this.state.email,
+            password: this.state.password
         };
         axios.post('http://localhost:3001/users/create', userObject)
             .then((res) => {
@@ -30,7 +36,7 @@ export default class CreateUser extends Component {
             }).catch((error) => {
                 console.log(error)
             });
-        this.setState({ name: '', email: '' })
+        this.setState({ name: '', email: '', password: '' })
     }
 
     render() {
@@ -44,6 +50,10 @@ export default class CreateUser extends Component {
                     <div className="form-group">
                         <label>Add User Email</label>
                         <input type="text" value={this.state.email} onChange={this.onChangeUserEmail} className="form-control" />
+                    </div>
+                    <div className="form-group">
+                        <label>Create Password</label>
+                        <input type="password" required value={this.state.password} onChange={this.onChangeUserPassword} className="form-control" />
                     </div>
                     <div className="form-group">
                         <input type="submit" value="Create User" className="btn btn-success btn-block" />

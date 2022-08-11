@@ -6,6 +6,7 @@ let mongoose = require('mongoose');
 let cors = require('cors');
 let bodyParser = require('body-parser');
 const userRoute = require('../server/routes/user.routes')
+const authRoute = require('../server/routes/authentication.routes')
 const createError = require('http-errors');
 
 mongoose
@@ -25,6 +26,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(cors());
 app.use('/users', userRoute)
+app.use('/authentication', authRoute)
 const port = process.env.PORT || 3001;
 const server = app.listen(port, () => {
     console.log('Connected to port ' + port)
