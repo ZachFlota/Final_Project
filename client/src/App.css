@@ -1,0 +1,66 @@
+.App {
+    margin:0%;
+    padding: 0%;
+    background-color: white;
+}
+
+.navbar-custom {
+    background-color: #0f3b57;
+    position: fixed;
+    width: 100%;
+}
+
+.Workspace {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 17px;
+    grid-template-areas: "sidebar writersdesk";
+    margin: 0px;
+    padding: 0px;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    position: fixed;
+    top: 55px;
+    border: 5px solid #0f3b57;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    left:0%;
+    background-color: white;
+}
+
+.writersdesk {
+    grid-area: writersdesk;
+    position: fixed;
+    top: 55px;
+    right: 0px;
+    border: 5px solid #0f3b57;
+    height: 92.5%;
+    width: 91.5%;
+}
+
+.writersdesk img {
+    height:100%;
+    width: 100%;
+    top: 15px;
+}
+
+
+.icon {
+    width: 75px;
+    height: 75px
+}
+
+.toolbox {
+    list-style-type: none;
+    justify-content: center;
+    
+}
+
+.iconlist {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-right: 1em;
+    
+}

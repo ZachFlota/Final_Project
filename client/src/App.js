@@ -1,10 +1,12 @@
 // client/src/App.js
 import React from "react";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import CreateUser from './components/create-user.component'
-import Users from './components/users.component'
-import Login from './components/login-form'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import './App.css';
+import CreateUser from './components/create-user.component';
+import Users from './components/users.component';
+import Login from './components/login-form';
+import Workspace from './components/workspace';
 
 
 function App() {
@@ -20,7 +22,7 @@ function App() {
     <Router>
       <div className="App">
         <header>
-          <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+          <nav className="navbar navbar-expand-lg navbar-dark navbar-custom">
             <a className="navbar-brand">Writer's Desk</a>
             <div
               className="collapse navbar-collapse"
@@ -42,6 +44,11 @@ function App() {
                     Login
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to={'/workspace'} >
+                    Workspace
+                  </Link>
+                </li>
               </ul>
             </div>
           </nav>
@@ -54,6 +61,7 @@ function App() {
                 <Route path="/create-user" element={<CreateUser />} />
                 <Route path="/users" element={<Users />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/workspace" element={<Workspace />} />
               </Routes>
             </div>
           </div>
