@@ -15,7 +15,9 @@ const Sidebar = (props) => {
                 <div>
                     <ul className="toolbox">
                         <li className="iconlist">
-                            <img className="icon" src={characterIcon} alt="Characters"></img>
+                            <a href="/workspace/tools/characters">
+                                <img className="icon" src={characterIcon} alt="Characters"></img>
+                            </a>
                         </li>
                         <li className="iconlist">
                             <img className="icon" src={settingIcon} alt="Settings"></img>

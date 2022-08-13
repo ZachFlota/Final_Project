@@ -38,12 +38,18 @@
     border: 5px solid #0f3b57;
     height: 92.5%;
     width: 91.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .writersdesk img {
-    height:100%;
-    width: 100%;
-    top: 15px;
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+    
+ 
 }
 
 
@@ -64,3 +70,23 @@
     padding-right: 1em;
     
 }
+
+.testdiv {
+    border: 5px solid #0f3b57;
+    position: fixed;
+    z-index: 1;
+    top: 5em;
+    left: 10em;
+    width: 87%;
+    height: 87%;
+}
+
+.character-form {
+    display: none;
+    position: fixed;
+    bottom: 34em;
+    left: 10em;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+
