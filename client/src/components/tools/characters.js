@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Sidebar from '../sidebar'
+import Sidebar from '../sidebar';
+import CharacterIndex from './characterIndex';
 import Writersdesk from '../writersdesk';
 
 
@@ -72,6 +73,7 @@ export default class Characters extends Component {
                 <Sidebar />
                 <Writersdesk />
                     <div className="testdiv">
+                        <CharacterIndex />
                         <div>
                             <input id="open-button" type="button" value="New Character" className="btn btn-primary btn-block" onClick={this.openForm} />
                         </div>

@@ -14,4 +14,14 @@ router.route('/new').post(async (req, res, next) => {
     })
 });
 
+router.route('/characters').get((req, res) => {
+    character.find((error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(data)
+        }
+    })
+})
+
 module.exports = router;

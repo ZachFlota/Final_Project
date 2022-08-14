@@ -79,6 +79,10 @@
     left: 10em;
     width: 87%;
     height: 87%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: character character character;
 }
 
 .character-form {
@@ -92,3 +96,11 @@
     z-index: 9;
 }
 
+.characterPost {
+    margin: 1vw;
+    grid-area: character;
+    float: left;
+    border: 5px solid #0f3b57;
+    z-index: 2;
+    background-color: white;
+}
