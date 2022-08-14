@@ -4,13 +4,25 @@ let characterSchema = new Schema({
     name: {
         type: String
     },
-    email: {
+    Bio: {
         type: String
     },
-    password: {
+    Age: {
+        type: Number
+    },
+    Appearance: {
         type: String
-    }
+    },
+    Personality: {
+        type: String
+    },
+    Attributes: {
+        type: String
+    },
+    Habbits: {
+        type: String
+    },
 }, {
-        collection: 'users'
+        collection: 'characters'
     })
 module.exports = mongoose.model('Character', characterSchema)

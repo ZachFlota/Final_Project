@@ -84,8 +84,10 @@
 .character-form {
     display: none;
     position: fixed;
-    bottom: 34em;
-    left: 10em;
+    background-color: white;
+    width: 85%;
+    bottom: 3em;
+    left: 11em;
     border: 3px solid #f1f1f1;
     z-index: 9;
 }
