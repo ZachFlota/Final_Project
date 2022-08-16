@@ -9,7 +9,7 @@ function withParams(Component) {
     return (props) => <Component {...props} params={useParams()} />;
 }
 
-class CharacterProfile extends Component {
+class CharacterEdit extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,7 +28,7 @@ class CharacterProfile extends Component {
 
     componentDidMount() {
         
-        axios.get(`http://localhost:3001/character/characters/${this.props.params.id}`)
+        axios.put(`http://localhost:3001/character/update/${this.props.params.id}`)
             .then(res => {
                 this.setState(res.data)
                 

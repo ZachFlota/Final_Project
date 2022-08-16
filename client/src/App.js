@@ -9,6 +9,8 @@ import Login from './components/login-form';
 import Workspace from './components/workspace';
 import Characters from './components/tools/characters/characters.js';
 import CharacterProfile from "./components/tools/characters/characterProfile";
+import Settings from './components/tools/settings/settings';
+import SettingProfile from "./components/tools/settings/settingProfile";
 
 
 function App() {
@@ -66,6 +68,8 @@ function App() {
                 <Route path="/workspace" element={<Workspace />} />
                 <Route path="/workspace/tools/characters" element={<Characters />} />
                 <Route path="/character/characters/:id" element={<CharacterProfile />} />
+                <Route path="/workspace/tools/settings" element={<Settings />} />
+                <Route path="/setting/settings/:id" element={<SettingProfile />} />
               </Routes>
             </div>
           </div>

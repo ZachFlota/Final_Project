@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link, Routes, useParams } from 'react-router-dom';
 import axios from 'axios';
-import CharacterProfileTemp from './characterProfileTemp'
 import Sidebar from '../../sidebar'
 import Writersdesk from '../../writersdesk'
 
@@ -9,17 +8,17 @@ function withParams(Component) {
     return (props) => <Component {...props} params={useParams()} />;
 }
 
-class CharacterProfile extends Component {
+class SettingProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
             name: '',
-            Bio: '',
-            Age: '',
-            Appearance: '',
-            Personality: '',
-            Attributes: '',
-            Habbits: '',
+            Geographic_location: '',
+            Description: '',
+            Time_period: '',
+            Characteristics: '',
+            Weather: '',
+            History: '',
         }
     }
     
@@ -28,7 +27,7 @@ class CharacterProfile extends Component {
 
     componentDidMount() {
         
-        axios.get(`http://localhost:3001/character/characters/${this.props.params.id}`)
+        axios.get(`http://localhost:3001/setting/settings/${this.props.params.id}`)
             .then(res => {
                 this.setState(res.data)
                 
@@ -40,36 +39,36 @@ class CharacterProfile extends Component {
 
 
 
-    characterProfileBox() {
+    settingProfileBox() {
         return (
-            <div className="characterProfileTemp">
+            <div className="settingProfileTemp">
                 <div>
                     <h3>Name:</h3>
                     <p> {this.state.name} </p>
                 </div>
                 <div>
-                    <h3>Bio:</h3>
-                    <p> {this.state.Bio} </p>
+                    <h3>Geographic Location:</h3>
+                    <p> {this.state.Geographic_location} </p>
                 </div>
                 <div>
-                    <h3>Age:</h3>
-                    <p> {this.state.Age} </p>
+                    <h3>Description:</h3>
+                    <p> {this.state.Description} </p>
                 </div>
                 <div>
-                    <h3>Appearance:</h3>
-                    <p> {this.state.Appearance} </p>
+                    <h3>Time Period:</h3>
+                    <p> {this.state.Time_period} </p>
                 </div>
                 <div>
-                    <h3>Personality:</h3>
-                    <p> {this.state.Personality} </p>
+                    <h3>Characteristics:</h3>
+                    <p> {this.state.Characteristics} </p>
                 </div>
                 <div>
-                    <h3>Attributes:</h3>
-                    <p> {this.state.Attributes} </p>
+                    <h3>Weather:</h3>
+                    <p> {this.state.Weather} </p>
                 </div>
                 <div>
-                    <h3>Habbits:</h3>
-                    <p> {this.state.Habbits} </p>
+                    <h3>History:</h3>
+                    <p> {this.state.History} </p>
                 </div>
             </div>
         )
@@ -77,9 +76,9 @@ class CharacterProfile extends Component {
 
     render() {
         return (
-            <div className="characterProfile">
-                <div className="characterProfileBox">
-                    {this.characterProfileBox()}
+            <div className="settingProfile">
+                <div className="settingProfileBox">
+                    {this.settingProfileBox()}
                 </div>
                 <Sidebar />
                 <Writersdesk />
@@ -87,4 +86,4 @@ class CharacterProfile extends Component {
         )
     }
 }
-export default withParams(CharacterProfile);
+export default withParams(SettingProfile);

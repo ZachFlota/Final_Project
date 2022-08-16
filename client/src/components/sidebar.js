@@ -20,7 +20,9 @@ const Sidebar = (props) => {
                             </a>
                         </li>
                         <li className="iconlist">
-                            <img className="icon" src={settingIcon} alt="Settings"></img>
+                            <a href="/workspace/tools/settings">
+                                <img className="icon" src={settingIcon} alt="Settings"></img>
+                            </a>
                         </li>
                         <li className="iconlist">
                             <img className="icon" src={plotIcon} alt="Plots"></img>

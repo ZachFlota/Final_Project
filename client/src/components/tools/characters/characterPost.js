@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import CharacterProfile from './characterProfile'
+import CharacterProfile from './characterProfile';
+import { BsFillPencilFill, BsFillTrashFill } from "react-icons/bs";
 
 class CharacterPost extends Component {
     
@@ -11,6 +12,10 @@ class CharacterPost extends Component {
                     <h3> {this.props.obj.name} </h3>
                 </a> 
                 <p> {this.props.obj.Bio} </p>
+                <div className="icons">
+                    <button><BsFillPencilFill /></button>
+                    <button><BsFillTrashFill /></button>
+                </div>
             </div>
         )
     }
