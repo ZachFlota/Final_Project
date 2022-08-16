@@ -7,7 +7,8 @@ import CreateUser from './components/create-user.component';
 import Users from './components/users.component';
 import Login from './components/login-form';
 import Workspace from './components/workspace';
-import Characters from './components/tools/characters';
+import Characters from './components/tools/characters/characters.js';
+import CharacterProfile from "./components/tools/characters/characterProfile";
 
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/workspace" element={<Workspace />} />
                 <Route path="/workspace/tools/characters" element={<Characters />} />
+                <Route path="/character/characters/:id" element={<CharacterProfile />} />
               </Routes>
             </div>
           </div>

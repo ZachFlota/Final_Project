@@ -24,4 +24,14 @@ router.route('/characters').get((req, res) => {
     })
 })
 
+router.route('/characters/:id').get((req, res) => {
+    character.findById(req.params.id, (error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(data)
+        }
+    })
+})
+
 module.exports = router;
