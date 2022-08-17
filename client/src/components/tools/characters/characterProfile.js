@@ -4,6 +4,7 @@ import axios from 'axios';
 import CharacterProfileTemp from './characterProfileTemp'
 import Sidebar from '../../sidebar'
 import Writersdesk from '../../writersdesk'
+import { BsXLg } from "react-icons/bs";
 
 function withParams(Component) {
     return (props) => <Component {...props} params={useParams()} />;
@@ -43,6 +44,11 @@ class CharacterProfile extends Component {
     characterProfileBox() {
         return (
             <div className="characterProfileTemp">
+                <div className="xbutton">   
+                    <a href="/workspace/tools/characters" >
+                        <BsXLg />
+                    </a>
+                </div>
                 <div>
                     <h3>Name:</h3>
                     <p> {this.state.name} </p>

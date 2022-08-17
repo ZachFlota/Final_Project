@@ -65,6 +65,7 @@ export default class Settings extends Component {
                 console.log(error)
             });
         this.setState({ name: '', Geographic_location: '', Description: '', Time_period: '', Characteristics: '', Weather: '', History: '' })
+        window.location.replace('http://localhost:3000/workspace/tools/settings')
     }
     render() {
         return (

@@ -115,6 +115,36 @@
     left: 11em;
     border: 3px solid #f1f1f1;
     z-index: 9;
+    background-image: url(../src/paper2.png);
+    box-shadow: 10px 10px 5px;
+}
+
+.characterEdit-form {
+    
+    position: fixed;
+    background-color: white;
+    width: 85%;
+    bottom: 3em;
+    left: 11em;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+    overflow-y: auto;
+    background-image: url(../src/paper2.png);
+    box-shadow: 10px 10px 5px;
+}
+
+.settingEdit-form {
+    position: fixed;
+    background-color: white;
+    width: 85%;
+    bottom: 3em;
+    left: 11em;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+    overflow-y: auto;
+    background-image: url(../src/paper2.png);
+    box-shadow: 10px 10px 5px;
+    
 }
 
 .characterPost {
@@ -146,6 +176,7 @@
     left: 10em;
     width: 87%;
     height: 87%;
+    overflow-y: auto;
 }
 
 .characterProfileBox {
@@ -232,4 +263,9 @@
     right: 0;
     
 
+}
+
+.xbutton {
+    position: relative;
+    float: right;
 }

@@ -11,6 +11,8 @@ import Characters from './components/tools/characters/characters.js';
 import CharacterProfile from "./components/tools/characters/characterProfile";
 import Settings from './components/tools/settings/settings';
 import SettingProfile from "./components/tools/settings/settingProfile";
+import CharacterEdit from "./components/tools/characters/characterEdit";
+import SettingEdit from "./components/tools/settings/settingEdit";
 
 
 function App() {
@@ -70,6 +72,8 @@ function App() {
                 <Route path="/character/characters/:id" element={<CharacterProfile />} />
                 <Route path="/workspace/tools/settings" element={<Settings />} />
                 <Route path="/setting/settings/:id" element={<SettingProfile />} />
+                <Route path="/character/edit/:id" element={<CharacterEdit />} />
+                <Route path="/setting/edit/:id" element={<SettingEdit />} />
               </Routes>
             </div>
           </div>

@@ -34,4 +34,29 @@ router.route('/settings/:id').get((req, res) => {
     })
 })
 
+router.route('/update/:id').put((req, res, next) => {
+    setting.findByIdAndUpdate(req.params.id, {
+        $set: req.body
+    }, (error, data) => {
+        if (error) {
+            return next(error);
+            console.log(error)
+        } else {
+            res.json(data)
+            
+        }
+    })
+})
+router.route('/delete/:id').delete((req, res, next) => {
+    setting.findByIdAndRemove(req.params.id, (error, data) => {
+        if (error) {
+            return next(error);
+        } else {
+            res.status(200).json({
+                msg: data
+            })
+        }
+    })
+})
+
 module.exports = router;

@@ -67,6 +67,7 @@ export default class Characters extends Component {
                 console.log(error)
             });
         this.setState({ name: '', Bio: '', Age: '', Appearance: '', Personality: '', Attributes: '', Habbits: '' })
+        window.location.replace('http://localhost:3000/workspace/tools/characters')
     }
     render() {
         return (
