@@ -3,6 +3,7 @@
 const express = require("express");
 //const PORT = process.env.PORT || 3001;
 let mongoose = require('mongoose');
+require('dotenv').config()
 let cors = require('cors');
 let bodyParser = require('body-parser');
 const userRoute = require('../server/routes/user.routes')
@@ -11,8 +12,10 @@ const characterRoute = require('../server/routes/character.routes')
 const settingRoute = require('../server/routes/setting.routes')
 const createError = require('http-errors');
 
+
+
 mongoose
-    .connect('mongodb://localhost:27017/writersdesk')
+    .connect(process.env.DB_URL)
     .then((x) => {
         console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
     })

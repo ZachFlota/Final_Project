@@ -6,6 +6,7 @@ import './App.css';
 import CreateUser from './components/create-user.component';
 import Users from './components/users.component';
 import Login from './components/login-form';
+import Navbar from "./components/navbar";
 import Workspace from './components/workspace';
 import Characters from './components/tools/characters/characters.js';
 import CharacterProfile from "./components/tools/characters/characterProfile";
@@ -27,38 +28,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <header>
-          <nav className="navbar navbar-expand-lg navbar-dark navbar-custom">
-            <a className="navbar-brand">Writer's Desk</a>
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            >
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item active">
-                  <Link className="nav-link" to={'/create-user'}>
-                    Create User
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to={'/users'}>
-                    Users List
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to={'/login'}>
-                    Login
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to={'/workspace'} >
-                    Workspace
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </header>
+        <Navbar />
         <div className="container">
           <div className="row">
             <div className="col-md-12">
