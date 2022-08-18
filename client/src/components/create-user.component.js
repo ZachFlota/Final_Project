@@ -1,6 +1,8 @@
 // ** create-user.component.js ** //
 import React, { Component } from 'react';
 import axios from 'axios';
+
+
 export default class CreateUser extends Component {
     constructor(props) {
         super(props)
@@ -24,7 +26,7 @@ export default class CreateUser extends Component {
         this.setState({ password: e.target.value })
     }
     onSubmit(e) {
-        e.preventDefault()
+        e.preventDefault() 
         const userObject = {
             name: this.state.name,
             email: this.state.email,
@@ -41,7 +43,8 @@ export default class CreateUser extends Component {
 
     render() {
         return (
-            <div className="wrapper">
+            <div className="createUserForm">
+                
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Add User Name</label>

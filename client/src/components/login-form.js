@@ -35,7 +35,7 @@ export default class LogIn extends Component {
     
     render() {
         return (
-            <div className="wrapper">
+            <div className="loginForm">
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>

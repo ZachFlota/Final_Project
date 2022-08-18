@@ -94,7 +94,7 @@ class SettingEdit extends Component {
             <div className="settingProfile">
                 <div className="settingEdit-form" id="settingEditForm">
                     <div className="xbutton">   
-                        <a href="/workspace/tools/characters" >
+                        <a href="/workspace/tools/settings" >
                             <BsXLg />
                         </a>
                     </div>
