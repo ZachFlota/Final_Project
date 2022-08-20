@@ -1,0 +1,18 @@
+- feat: added readme.md file
+- feat: add app demo gif
+- update: fix user authentication, register, and login
+- update: fix styling for create user and login forms
+- feat: connect to mongodb atlas
+- feat: add edit and delete functions to settings and character components
+- feat: Add settings features
+- feat: create character profile
+- feat: add character post/index
+- feat: Add create character feature and connected to db.
+- feat: create add character pop-up form
+- feat: add workspace component, add styling
+- feat: add password to create user form, create login form
+- feat: Configure express routes, server file, axios. Make Post and Get request for users.
+- feat: install mongoose and nodemon, declare mongoose schema for user
+- feat: add create-user and user components, install bootstrap
+- feat: establish Express server and build React app
+- Initial commit
