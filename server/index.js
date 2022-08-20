@@ -36,7 +36,7 @@ app.use('/authentication', authRoute)
 app.use('/character', characterRoute )
 app.use('/setting', settingRoute)
 const port = process.env.PORT || 3001;
-const server = app.listen(port, () => {
+app.listen(port, () => {
     console.log('Connected to port ' + port)
 })
 //Error Handling
