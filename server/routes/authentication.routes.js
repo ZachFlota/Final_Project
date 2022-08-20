@@ -2,7 +2,7 @@ let mongoose = require('mongoose'),
     express = require('express'),
     router = express.Router();
 let user = require('../models/user-schema');
-const bcrypt = require('bcrypt')
+
 
 
 
