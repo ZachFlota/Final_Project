@@ -3,6 +3,7 @@ import { Route, Link, Routes, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Sidebar from '../../sidebar'
 import Writersdesk from '../../writersdesk'
+import { BsXLg } from "react-icons/bs";
 
 function withParams(Component) {
     return (props) => <Component {...props} params={useParams()} />;
@@ -42,6 +43,11 @@ class SettingProfile extends Component {
     settingProfileBox() {
         return (
             <div className="settingProfileTemp">
+                <div className="xbutton">
+                    <a href="/workspace/tools/settings" >
+                        <BsXLg />
+                    </a>
+                </div>
                 <div>
                     <h3>Name:</h3>
                     <p> {this.state.name} </p>

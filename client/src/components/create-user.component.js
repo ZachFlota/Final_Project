@@ -1,68 +1,119 @@
 // ** create-user.component.js ** //
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { registerUser } from '../actions/authentication';
+import classnames from 'classnames';
+
+function withRouter(Component) {
+    function ComponentWithRouterProp(props) {
+        let location = useLocation();
+        let navigate = useNavigate();
+        let params = useParams();
+        return (
+            <Component
+                {...props}
+                router={{ location, navigate, params }}
+            />
+        )
+    };
+    return ComponentWithRouterProp;
+}
 
 
-export default class CreateUser extends Component {
-    constructor(props) {
-        super(props)
-        this.onChangeUserName = this.onChangeUserName.bind(this);
-        this.onChangeUserEmail = this.onChangeUserEmail.bind(this);
-        this.onChangeUserPassword = this.onChangeUserPassword.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+class CreateUser extends Component {
+    constructor() {
+        super()
         this.state = {
             name: '',
             email: '',
-            password: ''
+            password: '',
+            password_confirm: '',
+            errors: {}
         }
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
-    onChangeUserName(e) {
-        this.setState({ name: e.target.value })
+
+    handleInputChange(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
     }
-    onChangeUserEmail(e) {
-        this.setState({ email: e.target.value })
-    }
-    onChangeUserPassword(e) {
-        this.setState({ password: e.target.value })
-    }
-    onSubmit(e) {
-        e.preventDefault() 
-        const userObject = {
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const user = {
             name: this.state.name,
             email: this.state.email,
-            password: this.state.password
-        };
-        axios.post('http://localhost:3001/users/create', userObject)
-            .then((res) => {
-                console.log(res.data)
-            }).catch((error) => {
-                console.log(error)
+            password: this.state.password,
+            password_confirm: this.state.password_confirm
+        }
+        this.props.registerUser(user, this.props.history);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.auth.isAuthenticated) {
+            this.props.history.push("/")
+            }
+        if(nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
             });
-        this.setState({ name: '', email: '', password: '' })
+        }
+    }
+
+    componentDidMount() {
+        if(this.props.auth.isAuthenticated) {
+            this.props.history.push("/");
+        }
     }
 
     render() {
+        const { errors } = this.state;
         return (
             <div className="createUserForm">
                 
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Add User Name</label>
-                        <input type="text" value={this.state.name} onChange={this.onChangeUserName} className="form-control" />
+                <form onSubmit={this.handleSubmit}>
+                    <div>
+                        <h3>Create an Account</h3>
                     </div>
                     <div className="form-group">
-                        <label>Add User Email</label>
-                        <input type="text" value={this.state.email} onChange={this.onChangeUserEmail} className="form-control" />
+                        <input type="text" placeholder="Name" name="name" value={ this.state.name } onChange={ this.handleInputChange } className={classnames('form-control form-control-lg', {'is-invalid': errors.name})} />
+                        {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
                     </div>
                     <div className="form-group">
-                        <label>Create Password</label>
-                        <input type="password" required value={this.state.password} onChange={this.onChangeUserPassword} className="form-control" />
+                        <input type="email" placeholder="Email" name="email" value={ this.state.email } onChange={ this.handleInputChange } className={classnames('form-control form-control-lg', {'is-invalid': errors.email})} />
+                        {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Create User" className="btn btn-success btn-block" />
+                        <input type="password" placeholder="Password" name="password" value={ this.state.password } onChange={ this.handleInputChange } className={classnames('form-control form-control-lg', {'is-invalid': errors.password})} />
+                        {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
+                    </div>
+                    <div className="form-group">
+                        <input type="password" placeholder="Confirm Password" name="password_confirm" value={ this.state.password_confirm } onChange={ this.handleInputChange } className={classnames('form-control form-control-lg', {'is-invalid': errors.password_confirm})} />
+                        {errors.password_confirm && (<div className="invalid-feedback">{errors.password_confirm}</div>)}
+                    </div>
+                    <div className="form-group">
+                        <button type="submit" className="btn btn-primary">
+                            Register
+                        </button>
                     </div>
                 </form>
             </div>
         )
     }
 }
+
+CreateUser.propTypes = {
+    registerUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(mapStateToProps,{ registerUser })(withRouter(CreateUser))

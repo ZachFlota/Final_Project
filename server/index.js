@@ -1,9 +1,8 @@
 // server/index.js
-//const path = require('path');
 const express = require("express");
-//const PORT = process.env.PORT || 3001;
 let mongoose = require('mongoose');
-require('dotenv').config()
+require('dotenv').config();
+const passport = require('passport');
 let cors = require('cors');
 let bodyParser = require('body-parser');
 const userRoute = require('../server/routes/user.routes')
@@ -15,7 +14,7 @@ const createError = require('http-errors');
 
 
 mongoose
-    .connect(process.env.DB_URL)
+    .connect(process.env.DB_URL, { useNewUrlParser: true })
     .then((x) => {
         console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
     })
@@ -24,9 +23,11 @@ mongoose
     })
 
 const app = express();
+app.use(passport.initialize());
+require('./passport')(passport);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: true
+    extended: false
 }));
 
 app.use(cors());
@@ -53,9 +54,9 @@ app.use(function (err, req, res, next) {
 //app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // Handle GET requests to /api route
-//app.get("/api", (req, res) => {
-//    res.json({ message: "Hello from server!" });
-//  });
+app.get("/api", (req, res) => {
+   res.json({ message: "Hello from server!" });
+ });
 
 // All other GET requests not handled before will return our React app
 //app.get('*', (req, res) => {

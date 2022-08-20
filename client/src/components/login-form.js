@@ -1,69 +1,108 @@
 // ** login-form.js ** //
 import React, { Component } from 'react';
-import axios from 'axios';
-export default class LogIn extends Component {
-    constructor(props) {
-        super(props)
-        this.onChangeUserEmail = this.onChangeUserEmail.bind(this);
-        this.onChangeUserPassword = this.onChangeUserPassword.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { loginUser } from '../actions/authentication';
+import classnames from 'classnames';
+import { Navigate, Navigation } from 'react-router-dom';
+
+
+
+class LogIn extends Component {
+    constructor() {
+        super()
         this.state = {
             email: '',
             password: '',
+            errors: {}
+        }
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleInputChange(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const user = {
+            email: this.state.email,
+            password: this.state.password,
+        }
+        this.props.loginUser(user);
+    }
+
+    componentDidMount() {
+        if(this.props.auth.isAuthenticated) {
+            // this.props.navigation.navigate("/");
         }
     }
-    onChangeUserEmail(e) {
-        this.setState({ email: e.target.value})
-    }
-    onChangeUserPassword(e) {
-        this.setState({ password: e.target.value })
-    }
-    onSubmit(e) {
-        e.preventDefault()
-        const authObject = {
-            email: this.state.email,
-            password: this.state.password
-        };
-        axios.post('http://localhost:3001/authentication/login', authObject)
-            .then((res) => {
-                console.log(res.data)
-            }).catch((error) => {
-                console.log(error)
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.auth.isAuthenticated) {
+            // this.props.navigation.navigate("/")
+        }
+        if(nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
             });
-        this.setState({ email: '', password: '' })
+        }
     }
     
     render() {
+        const {errors} = this.state;
         return (
             <div className="loginForm">
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            required
-                            value={this.state.email}
-                            onChange={this.onChangeUserEmail}
-                            className="form-control"
-                            id="email"
-                            name="email"
-                        />
+                <form onSubmit={this.handleSubmit}>
+                    <div>
+                        <h3>Login</h3>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="password">Password</label>
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            name="email"
+                            value={ this.state.email }
+                            onChange={ this.handleInputChange }
+                            className={classnames('form-control form-control-lg', {'is-invalid': errors.email})}
+                        />
+                        {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
+                    </div>
+                    <div className="form-group">
                         <input
                             type="password"
-                            required
-                            value={this.state.password}
-                            onChange={this.onChangeUserPassword}
-                            className="form-control"
-                            id="password"
+                            placeholder="Password"
                             name="password"
+                            value={ this.state.password }
+                            onChange={ this.handleInputChange }
+                            className={classnames('form-control form-control-lg', {'is-invalid': errors.password})}
                         />
-                    </div>                    
-                    <input className="btn btn-primary" type="submit" value="Login" />
+                        {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
+                    </div> 
+                    <div className="form-group">                   
+                        <button type="submit" className="btn btn-primary">
+                            Login
+                        </button>
+                    </div>
                 </form>
             </div>
         )
     }
 }
+
+LogIn.propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired,
+    
+}
+
+const mapStateToProps = (state) => ({
+    auth: state.auth,
+    errors: state.errors
+})
+
+export default connect(mapStateToProps, { loginUser })(LogIn)
