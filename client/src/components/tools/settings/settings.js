@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Sidebar from '../../sidebar';
 import SettingIndex from './settingIndex';
-import SettingProfile from './settingProfile';
-import Writersdesk from '../../writersdesk';
+
 
 export default class Settings extends Component {
     constructor(props) {
@@ -70,52 +71,49 @@ export default class Settings extends Component {
     render() {
         return (
             <div className="Workspace">
-                <Sidebar />
-                <Writersdesk />
-                
-                    <div className="testdiv">
-                        <SettingIndex />
-                    
-                        <div className="open-button">
-                            <input id="open-button" type="button" value="New Setting" className="btn btn-primary btn-block" onClick={this.openForm} />
-                        </div>
-                        <div className="setting-form" id="settingForm">
-                            < form onSubmit={ this.onSubmit } className="form-container">
-                                <div className="form-group" >
-                                    <label>Name</label>
-                                    <input type="text" value={this.state.name} onChange={this.onChangeSettingName} className="form-control" />
-                                </div>
-                                <div className="form-group" >
-                                    <label>Geographic Location</label>
-                                    <textarea name="Geographic_location" value={this.state.Geographic_location} onChange={this.onChangeSettingGeographic_location} className="form-control" />
-                                </div>
-                                <div>
-                                    <label>Description</label>
-                                    <input type="text" value={this.state.Description} onChange={this.onChangeSettingDescription} className="form-control" />
-                                </div>
-                                <div>
-                                    <label>Time Period</label>
-                                    <textarea name="Time_period" value={this.state.Time_period} onChange={this.onChangeSettingTime_period} className="form-control" />
-                                </div>
-                                <div>
-                                    <label>Characteristics</label>
-                                    <textarea name="Characteristics" value={this.state.Characteristics} onChange={this.onChangeSettingCharacteristics} className="form-control" />
-                                </div>
-                                <div>
-                                    <label>Weather</label>
-                                    <textarea name="Weather" value={this.state.Weather} onChange={this.onChangeSettingWeather} className="form-control" />
-                                </div>
-                                <div>
-                                    <label>History</label>
-                                    <textarea name="History" value={this.state.History} onChange={this.onChangeSettingHistory} className="form-control" />
-                                </div>
-                                <div className="form-group">
-                                    <input type="submit" value="Create Setting" className="btn btn-success btn-block" />
-                                    <input type="button" value="Close" className="btn btn-danger btn-block" onClick={this.closeForm} />
-                                </div>
-                            </form>
-                        </div>
+                <div>
+                    <Sidebar />
+                </div>
+                <div className="writersdesk">
+                    <div className="open-button">
+                        <input id="open-button" type="button" value="New Setting" className="btn btn-primary btn-block" onClick={this.openForm} />
                     </div>
+                    <SettingIndex />
+                    <div className="setting-form" id="settingForm">
+                        <Form onSubmit={ this.onSubmit }>
+                            <Form.Group className="mb-3" controlId="name" >
+                                <Form.Label>Name</Form.Label>
+                                <Form.Control type="text" value={this.state.name} onChange={this.onChangeSettingName} />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="Geographic_location" >
+                                <Form.Label>Geographic Location</Form.Label>
+                                <Form.Control as="textarea" name="Geographic_location" value={this.state.Geographic_location} onChange={this.onChangeSettingGeographic_location} />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="Description">
+                                <Form.Label>Description</Form.Label>
+                                <Form.Control as="textarea" value={this.state.Description} onChange={this.onChangeSettingDescription} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Time Period</Form.Label>
+                                <Form.Control as="textarea" name="Time_period" value={this.state.Time_period} onChange={this.onChangeSettingTime_period} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Characteristics</Form.Label>
+                                <Form.Control as="textarea" name="Characteristics" value={this.state.Characteristics} onChange={this.onChangeSettingCharacteristics} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Weather</Form.Label>
+                                <Form.Control as="textarea" name="Weather" value={this.state.Weather} onChange={this.onChangeSettingWeather} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>History</Form.Label>
+                                <Form.Control as="textarea" name="History" value={this.state.History} onChange={this.onChangeSettingHistory} />
+                            </Form.Group>
+                            <Button variant="success" type="submit">Create Setting</Button>
+                            <Button variant="danger" type="button" onClick={this.closeForm}>Close</Button>
+                        </Form>
+                    </div>
+                </div>
             </div>
         )
     }

@@ -7,7 +7,6 @@ function Writersdesk(props) {
     return (
         <div className="writersdesk">
             <img src={desk} alt="wooden desk surface"></img>
-
         </div>
     )
     

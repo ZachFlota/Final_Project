@@ -8,8 +8,12 @@ export default class Workspace extends Component {
     render() {
         return (
             <div className="Workspace">
-                <Sidebar />
-                <Writersdesk />
+                <div>
+                    <Sidebar />
+                </div>
+                <div className='writersdesk'>
+                    
+                </div>
             </div>
         )
     }

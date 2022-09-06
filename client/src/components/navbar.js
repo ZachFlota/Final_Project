@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/authentication';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+
 
 function withRouter(Component) {
     function ComponentWithRouterProp(props) {
@@ -20,7 +24,7 @@ function withRouter(Component) {
     return ComponentWithRouterProp;
 }
 
-class Navbar extends Component {
+class NavBar extends Component {
 
     onLogout(e) {
         e.preventDefault();
@@ -31,42 +35,33 @@ class Navbar extends Component {
     render() {
         const {isAuthenticated, user} = this.props.auth;
         const authLinks = (
-            <ul className="navbar-nav ml-auto">
-                <a href="#" className="nav-link" onClick={this.onLogout.bind(this)}>
-                    {user.name} Logout
-                </a>
-                <li className="nav-item">
-                    <Link className="nav-link" to="/workspace">Workspace</Link>
-                </li>
-            </ul>
+            <Nav className="me-auto">
+                <Nav.Link href="#" onClick={this.onLogout.bind(this)}>{user.name} Logout</Nav.Link> 
+                <Nav.Link href="/workspace">Workspace</Nav.Link>
+            </Nav>
         )
         const guestLinks = (
-            <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                    <Link className="nav-link" to="/create-user">Sign Up</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link" to="/login">Login</Link>
-                </li>
-            </ul>
+            <Nav className="me-auto">
+                <Nav.Link href="/create-user">Sign Up</Nav.Link>
+                <Nav.Link href="/login">Login</Nav.Link>
+            </Nav>
+
         )
 
         return (
-            <header>
-                <nav className="navbar navbar-expand-lg navbar-dark navbar-custom">
-                    <Link className="navbar-brand" to="/" >Writer's Desk</Link>
-                    <div
-                    className="collapse navbar-collapse"
-                    id="navbarSupportedContent"
-                    >
-                        {isAuthenticated ? authLinks : guestLinks}
-                    </div>
-                </nav>
-            </header>
+            <Navbar bg="light" expand="lg" >
+                <Container id="Navbar">
+                    <Navbar.Brand href="/">Writer's Desk</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        {isAuthenticated ? authLinks : guestLinks}                        
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
         )
     }
 }
-Navbar.propTypes = {
+NavBar.propTypes = {
     logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
 }
@@ -75,4 +70,4 @@ const mapStateToProps = (state) => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, { logoutUser })(withRouter(Navbar));
+export default connect(mapStateToProps, { logoutUser })(withRouter(NavBar));

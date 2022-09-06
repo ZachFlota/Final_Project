@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Link, Routes, useParams } from 'react-router-dom';
 import axios from 'axios';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import Sidebar from '../../sidebar'
 import Writersdesk from '../../writersdesk'
 import { BsXLg } from "react-icons/bs";
@@ -91,50 +93,51 @@ class SettingEdit extends Component {
 
     render() {
         return (
-            <div className="settingProfile">
-                <div className="settingEdit-form" id="settingEditForm">
-                    <div className="xbutton">   
-                        <a href="/workspace/tools/settings" >
-                            <BsXLg />
-                        </a>
-                    </div>
-                    < form onSubmit={ this.onSubmit } className="form-container">
-                        <div className="form-group" >
-                            <label>Name</label>
-                            <input type="text" value={this.state.name} onChange={this.onChangeSettingName} className="form-control" />
-                        </div>
-                        <div className="form-group" >
-                            <label>Geographic Location</label>
-                            <textarea name="Geographic_location" value={this.state.Geographic_location} onChange={this.onChangeSettingGeographic_location} className="form-control" />
-                        </div>
-                        <div>
-                            <label>Description</label>
-                            <input type="text" value={this.state.Description} onChange={this.onChangeSettingDescription} className="form-control" />
-                        </div>
-                        <div>
-                            <label>Time Period</label>
-                            <textarea name="Time_period" value={this.state.Time_period} onChange={this.onChangeSettingTime_period} className="form-control" />
-                        </div>
-                        <div>
-                            <label>Characteristics</label>
-                            <textarea name="Characteristics" value={this.state.Characteristics} onChange={this.onChangeSettingCharacteristics} className="form-control" />
-                        </div>
-                        <div>
-                            <label>Weather</label>
-                            <textarea name="Weather" value={this.state.Weather} onChange={this.onChangeSettingWeather} className="form-control" />
-                        </div>
-                        <div>
-                            <label>History</label>
-                            <textarea name="History" value={this.state.History} onChange={this.onChangeSettingHistory} className="form-control" />
-                        </div>
-                        <div className="form-group">
-                            <input type="submit" value="Edit Setting" className="btn btn-success btn-block" />
-                            <input type="button" value="Delete Setting" className="btn btn-danger btn-block" onClick={this.deleteSetting} />
-                        </div>
-                    </form>
+            <div className="Workspace">
+                <div>
+                    <Sidebar />
                 </div>
-                <Sidebar />
-                <Writersdesk /> 
+                <div className="writersdesk">
+                    <div className="settingEdit-form" id="settingEditForm">
+                        <div className="xbutton">   
+                            <a href="/workspace/tools/settings" >
+                                <BsXLg />
+                            </a>
+                        </div>
+                        <Form onSubmit={ this.onSubmit }>
+                            <Form.Group className="mb-3" controlId="name" >
+                                <Form.Label>Name</Form.Label>
+                                <Form.Control type="text" value={this.state.name} onChange={this.onChangeSettingName} />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="Geographic_location" >
+                                <Form.Label>Geographic Location</Form.Label>
+                                <Form.Control as="textarea" name="Geographic_location" value={this.state.Geographic_location} onChange={this.onChangeSettingGeographic_location} />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="description">
+                                <Form.Label>Description</Form.Label>
+                                <Form.Control as="textarea" value={this.state.Description} onChange={this.onChangeSettingDescription} />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="time_period">
+                                <Form.Label>Time Period</Form.Label>
+                                <Form.Control as="textarea" name="Time_period" value={this.state.Time_period} onChange={this.onChangeSettingTime_period} />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="characteristics">
+                                <Form.Label>Characteristics</Form.Label>
+                                <Form.Control as="textarea" name="Characteristics" value={this.state.Characteristics} onChange={this.onChangeSettingCharacteristics}  />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="weather">
+                                <Form.Label>Weather</Form.Label>
+                                <Form.Control as="textarea" name="Weather" value={this.state.Weather} onChange={this.onChangeSettingWeather}  />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="history">
+                                <Form.Label>History</Form.Label>
+                                <Form.Control as="textarea" name="History" value={this.state.History} onChange={this.onChangeSettingHistory}  />
+                            </Form.Group>
+                            <Button variant="success" type="submit">Edit Setting</Button>
+                            <Button variant="danger" type="button" onClick={this.deleteSetting}>Delete Setting</Button>
+                        </Form>
+                    </div>
+                </div>
             </div>            
         )
     }

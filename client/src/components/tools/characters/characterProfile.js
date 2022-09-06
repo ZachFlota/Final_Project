@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link, Routes, useParams } from 'react-router-dom';
 import axios from 'axios';
-import CharacterProfileTemp from './characterProfileTemp'
 import Sidebar from '../../sidebar'
-import Writersdesk from '../../writersdesk'
 import { BsXLg } from "react-icons/bs";
 
 function withParams(Component) {
@@ -15,6 +13,7 @@ class CharacterProfile extends Component {
         super(props);
         this.state = {
             name: '',
+            Type: '',
             Bio: '',
             Age: '',
             Appearance: '',
@@ -43,38 +42,42 @@ class CharacterProfile extends Component {
 
     characterProfileBox() {
         return (
-            <div className="characterProfileTemp">
+            <div className="characterEdit-form">
                 <div className="xbutton">   
                     <a href="/workspace/tools/characters" >
                         <BsXLg />
                     </a>
                 </div>
                 <div>
-                    <h3>Name:</h3>
+                    <h4>Name:</h4>
                     <p> {this.state.name} </p>
                 </div>
                 <div>
-                    <h3>Bio:</h3>
+                    <h4>Type:</h4>
+                    <p> {this.state.Type } </p>
+                </div>
+                <div>
+                    <h4>Bio:</h4>
                     <p> {this.state.Bio} </p>
                 </div>
                 <div>
-                    <h3>Age:</h3>
+                    <h4>Age:</h4>
                     <p> {this.state.Age} </p>
                 </div>
                 <div>
-                    <h3>Appearance:</h3>
+                    <h4>Appearance:</h4>
                     <p> {this.state.Appearance} </p>
                 </div>
                 <div>
-                    <h3>Personality:</h3>
+                    <h4>Personality:</h4>
                     <p> {this.state.Personality} </p>
                 </div>
                 <div>
-                    <h3>Attributes:</h3>
+                    <h4>Attributes:</h4>
                     <p> {this.state.Attributes} </p>
                 </div>
                 <div>
-                    <h3>Habbits:</h3>
+                    <h4>Habbits:</h4>
                     <p> {this.state.Habbits} </p>
                 </div>
             </div>
@@ -83,12 +86,13 @@ class CharacterProfile extends Component {
 
     render() {
         return (
-            <div className="characterProfile">
-                <div className="characterProfileBox">
-                    {this.characterProfileBox()}
+            <div className="Workspace">
+                <div>
+                    <Sidebar />
                 </div>
-                <Sidebar />
-                <Writersdesk />
+                <div className="writersdesk">
+                    {this.characterProfileBox()}               
+                </div>
             </div>
         )
     }

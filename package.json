@@ -89,7 +89,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "server/node server/index.js client/react-scripts start",
+    "start": "node index.js react-scripts start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

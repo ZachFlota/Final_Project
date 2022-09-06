@@ -4,20 +4,22 @@
     background-color: white;
 }
 
-.navbar-custom {
-    background-color: #0f3b57;
+.container-fluid {
     position: fixed;
-    width: 100%;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    overflow: hidden;
+    
+    
 }
 
-.Workspace {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    gap: 17px;
-    grid-template-areas: "sidebar writersdesk";
-    margin: 0px;
-    padding: 0px;
+#Navbar {
+    position: sticky;
+    top: 0;
 }
+
+
 
 .backgroundImg {
     position: fixed;
@@ -45,30 +47,34 @@
     background-color: white;
 }
 
-.sidebar {
-    grid-area: sidebar;
-    position: fixed;
-    top: 55px;
-    border: 5px solid #0f3b57;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    left:0%;
-    background-color: white;
+.Workspace {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+
 }
 
+
+
 .writersdesk {
-    grid-area: writersdesk;
-    position: fixed;
-    top: 55px;
-    right: 0px;
-    border: 5px solid #0f3b57;
-    height: 92.5%;
-    width: 91.5%;
+    flex-grow: 2;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    z-index: -1;
+    flex-direction: column;
+    column-gap: 1em;
+    padding: 2em;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+    
+    
+    z-index: 1;
 }
 
 .writersdesk img {
@@ -118,70 +124,81 @@
 }
 
 .characterBox {
-    position: fixed;
-    z-index: 3;
-    top: 8em;
-    left: 10em;
-    width: 87%;
-    height: 80%;
-    display: inline-flex;
+    position: absolute;
+    z-index: 5;
+    margin-top: 4em;
+    padding: 1em;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-content: space-around;
+    justify-content: flex-start;
+    align-content: flex-start;
+    overflow-x: hidden;
+    overflow-y: auto;
+    gap: 2em;
+    height: 70%;
+    
 
         
     
 }
 
+
+
 .character-form {
     display: none;
-    position: fixed;
-    background-color: white;
-    width: 85%;
-    bottom: 3em;
-    left: 11em;
-    border: 3px solid #f1f1f1;
+    position: absolute;
+    margin: auto;
+    padding: 2em;
+    width: 90%;
+    height: 85%;
+    overflow-x: hidden;
+    overflow-y: auto;
     z-index: 9;
     background-image: url(../src/paper2.png);
     box-shadow: 10px 10px 5px;
+
+
+
+
 }
 
 .characterEdit-form {
-    
-    position: fixed;
-    background-color: white;
-    width: 85%;
-    bottom: 3em;
-    left: 11em;
-    border: 3px solid #f1f1f1;
-    z-index: 9;
+    position: absolute;
+    margin: auto;
+    padding: 2em;
+    width: 90%;
+    height: 85%;
+    overflow-x: auto;
     overflow-y: auto;
+    z-index: 9;
     background-image: url(../src/paper2.png);
     box-shadow: 10px 10px 5px;
+
 }
 
 .settingEdit-form {
-    position: fixed;
-    background-color: white;
-    width: 85%;
-    bottom: 3em;
-    left: 11em;
-    border: 3px solid #f1f1f1;
-    z-index: 9;
+    position: absolute;
+    margin: auto;
+    padding: 2em;
+    width: 90%;
+    height: 85%;
+    overflow-x: auto;
     overflow-y: auto;
+    z-index: 9;
     background-image: url(../src/paper2.png);
     box-shadow: 10px 10px 5px;
     
 }
 
 .characterPost {
-    margin: 1vw;
+    margin: 1em;
     width: 15em;
     height: 15em;
     background-image: url(../src/paper.png);
     box-shadow: 10px 10px 5px;
     padding: 1em;
+    box-sizing: border-box;
     
 }
 
@@ -227,28 +244,32 @@
 
 .setting-form {
     display: none;
-    position: fixed;
-    background-color: white;
-    width: 85%;
-    bottom: 3em;
-    left: 11em;
-    border: 3px solid #f1f1f1;
+    position: absolute;
+    margin: auto;
+    padding: 2em;
+    width: 90%;
+    height: 85%;
+    overflow-x: hidden;
+    overflow-y: auto;
     z-index: 9;
     background-image: url(../src/paper2.png);
+    box-shadow: 10px 10px 5px;
 }
 
 .settingBox {
-    position: fixed;
-    z-index: 3;
-    top: 8em;
-    left: 10em;
-    width: 87%;
-    height: 80%;
-    display: inline-flex;
+    position: absolute;
+    z-index: 5;
+    margin-top: 4em;
+    padding: 1em;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-content: space-around;
+    justify-content: flex-start;
+    align-content: flex-start;
+    overflow-x: hidden;
+    overflow-y: auto;
+    gap: 2em;
+    height: 70%;
 
         
     
@@ -286,15 +307,26 @@
     padding: 1em;
 }
 
-.icons {
-    
-    bottom: 0;
-    right: 0;
-    
 
-}
 
 .xbutton {
     position: relative;
     float: right;
 }
+
+.card .card-body {
+    box-shadow: 10px 10px 5px;
+    /* background-image: url(../src/paper2.png); */
+}
+
+.card .card-title a {
+    text-decoration: none;
+    color: black;
+}
+
+.card .icons a {
+    text-decoration: none;
+    color: rgb(191, 138, 3);
+    float: right;
+}
+

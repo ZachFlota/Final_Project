@@ -1,29 +1,30 @@
 import React, { Component } from 'react';
-import SettingProfile from './settingProfile'
+import Card from 'react-bootstrap/Card';
 import { BsFillPencilFill } from "react-icons/bs";
 
 class SettingPost extends Component {
     
     render() {
         return (
-            <div className="settingPost">
-                <div className="icons">
-                    <a href={`/setting/edit/${this.props.obj._id}`}>
-                        <BsFillPencilFill />
-                    </a>
-                </div>
-                <a href={`/setting/settings/${this.props.obj._id}`}>
-                    <h3> {this.props.obj.name} </h3>
-                </a> 
-                <p> {this.props.obj.Description} </p>
-                
-            </div>
+            <Card className="custom-class" style={{ width: '14rem', height: '14rem' }}>
+                <Card.Body>
+                    <div className="icons">
+                        <a className="pencil" href={`/setting/edit/${this.props.obj._id}`}>
+                            <BsFillPencilFill />
+                        </a>
+                    </div>
+                    <Card.Title>
+                        <a className="settinglink" href={`/setting/settings/${this.props.obj._id}`}>
+                            <h3> {this.props.obj.name} </h3>
+                        </a>  
+                    </Card.Title>
+                    <Card.Text>
+                        {this.props.obj.Description}
+                    </Card.Text>
+                </Card.Body>
+            </Card>
         )
     }
-/*     openProfile() {
-        <CharacterProfile />
-        console.log('clicked')
-    } */
 }
 
 export default SettingPost

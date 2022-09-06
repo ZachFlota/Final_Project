@@ -11,7 +11,7 @@ import './App.css';
 import CreateUser from './components/create-user.component';
 import Login from './components/login-form';
 import Home from './components/home';
-import Navbar from "./components/navbar";
+import NavBar from "./components/navbar";
 import Workspace from './components/workspace';
 import Characters from './components/tools/characters/characters.js';
 import CharacterProfile from "./components/tools/characters/characterProfile";
@@ -49,9 +49,9 @@ function App() {
     <Provider store = { store }>
       <Router>
         <div className="App">
-          <Navbar />
+          <NavBar />
           <img className="backgroundImg" src={deskLg} alt="wooden desk surface"></img>
-          <div className="container">
+          <div className="container-fluid p-0">
             <Routes>
               <Route exact path="/" element={<Home />} />
               <Route path="/create-user" element={<CreateUser />} />

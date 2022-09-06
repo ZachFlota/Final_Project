@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Link, Routes, useParams } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Sidebar from '../../sidebar'
-import Writersdesk from '../../writersdesk'
 import { BsXLg } from "react-icons/bs";
 
 function withParams(Component) {
@@ -14,6 +15,7 @@ class CharacterEdit extends Component {
         super(props);
         this.onChangeCharacterBio = this.onChangeCharacterBio.bind(this);
         this.onChangeCharacterName = this.onChangeCharacterName.bind(this);
+        this.onChangeCharacterType = this.onChangeCharacterType.bind(this);
         this.onChangeCharacterAge = this.onChangeCharacterAge.bind(this);
         this.onChangeCharacterAppearance = this.onChangeCharacterAppearance.bind(this);
         this.onChangeCharacterPersonality = this.onChangeCharacterPersonality.bind(this);
@@ -23,6 +25,7 @@ class CharacterEdit extends Component {
         this.state = {
             id: '',
             name: '',
+            Type: '',
             Bio: '',
             Age: '',
             Appearance: '',
@@ -33,6 +36,9 @@ class CharacterEdit extends Component {
     }
     onChangeCharacterName(e) {
         this.setState({ name: e.target.value})
+    }
+    onChangeCharacterType(e) {
+        this.setState({ Type: e.target.value })
     }
     onChangeCharacterBio(e) {
         this.setState({ Bio: e.target.value })
@@ -56,6 +62,7 @@ class CharacterEdit extends Component {
         e.preventDefault()
         const characterObject = {
             name: this.state.name,
+            Type: this.state.Type,
             Bio: this.state.Bio,
             Age: this.state.Age,
             Appearance: this.state.Appearance,
@@ -71,7 +78,7 @@ class CharacterEdit extends Component {
             .catch(function (error) {
                 console.log(error);
             })
-        this.setState({ name: '', Bio: '', Age: '', Appearance: '', Personality: '', Attributes: '', Habbits: '' });
+        this.setState({ name: '', Type:'', Bio: '', Age: '', Appearance: '', Personality: '', Attributes: '', Habbits: '' });
         window.location.replace('http://localhost:3000/workspace/tools/characters')
     }
 
@@ -96,51 +103,62 @@ class CharacterEdit extends Component {
 
     render() {
         return (
-            <div className="characterProfile">
-                <div className="characterEdit-form" id="characterEditForm">
-                            <div className="xbutton">   
-                                <a href="/workspace/tools/characters" >
-                                    <BsXLg />
-                                </a>
-                            </div>
-                            < form onSubmit={ this.onSubmit } className="form-container">
-                                
-                                <div className="form-group" >
-                                    <label>Name</label>
-                                    <input type="text" value={this.state.name} onChange={this.onChangeCharacterName} className="form-control" />
-                                </div>
-                                <div className="form-group" >
-                                    <label>Quick Bio</label>
-                                    <textarea name="Bio" value={this.state.Bio} onChange={this.onChangeCharacterBio} className="form-control" />
-                                </div>
-                                <div>
-                                    <label>Age</label>
-                                    <input type="text" value={this.state.Age} onChange={this.onChangeCharacterAge} className="form-control" />
-                                </div>
-                                <div>
-                                    <label>Physical Appearance</label>
-                                    <textarea name="appearance" value={this.state.Appearance} onChange={this.onChangeCharacterAppearance} className="form-control" />
-                                </div>
-                                <div>
-                                    <label>Personality</label>
-                                    <textarea name="personality" value={this.state.Personality} onChange={this.onChangeCharacterPersonality} className="form-control" />
-                                </div>
-                                <div>
-                                    <label>Attributes</label>
-                                    <textarea name="attributes" value={this.state.Attributes} onChange={this.onChangeCharacterAttributes} className="form-control" />
-                                </div>
-                                <div>
-                                    <label>Habbits</label>
-                                    <textarea name="habbits" value={this.state.Habbits} onChange={this.onChangeCharacterHabbits} className="form-control" />
-                                </div>
-                                <div className="form-group">
-                                    <input type="submit" value="Edit Character" className="btn btn-success btn-block" />
-                                    <input type="button" value="Delete Character" className="btn btn-danger btn-block" onClick={this.deleteCharacter} />
-                                </div>
-                            </form>
+            <div className="Workspace">
+                <div>
+                    <Sidebar />
+                </div>
+                <div className="writersdesk">
+                    <div className="characterEdit-form" id="characterEditForm">
+                        <div className="xbutton">   
+                            <a href="/workspace/tools/characters" >
+                                <BsXLg />
+                            </a>
                         </div>
-                <Sidebar />
-                <Writersdesk />
+                        <Form onSubmit={ this.onSubmit }>
+                            <Form.Group className="mb-3" controlId="name" >
+                                <Form.Label>Name</Form.Label>
+                                <Form.Control type="text" value={this.state.name} onChange={this.onChangeCharacterName} />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="type">
+                                <Form.Select value={this.state.Type} onChange={this.onChangeCharacterType}>
+                                    <option>Select Character Type</option>
+                                    <option value="Protagonist">Protagonist</option>
+                                    <option value="Antagonist">Antagonist</option>
+                                    <option value="Love Interest">Love Interest</option>
+                                    <option value="Confidant">Confidant</option>
+                                    <option value="Tertiary">Tertiary</option>
+                                    <option value="Foil">Foil</option>
+                                </Form.Select>
+                            </Form.Group>
+                            <Form.Group className="form-group" >
+                                <Form.Label>Quick Bio</Form.Label>
+                                <Form.Control as="textarea" name="Bio" value={this.state.Bio} onChange={this.onChangeCharacterBio} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Age</Form.Label>
+                                <Form.Control type="text" value={this.state.Age} onChange={this.onChangeCharacterAge} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Physical Appearance</Form.Label>
+                                <Form.Control as="textarea" name="appearance" value={this.state.Appearance} onChange={this.onChangeCharacterAppearance} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Personality</Form.Label>
+                                <Form.Control as="textarea" name="personality" value={this.state.Personality} onChange={this.onChangeCharacterPersonality} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Attributes</Form.Label>
+                                <Form.Control as="textarea" name="attributes" value={this.state.Attributes} onChange={this.onChangeCharacterAttributes} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Habbits</Form.Label>
+                                <Form.Control as="textarea" name="habbits" value={this.state.Habbits} onChange={this.onChangeCharacterHabbits} />
+                            </Form.Group>
+                            <Button variant="success" type="submit">Edit Character</Button>
+                            <Button variant="danger" type="button" onClick={this.deleteCharacter}>Delete Character</Button>
+                        </Form>
+                    </div>
+                </div>                
             </div>
         )
     }

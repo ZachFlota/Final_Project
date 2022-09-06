@@ -1,29 +1,57 @@
 import React, { Component } from 'react';
-import CharacterProfile from './characterProfile';
 import { BsFillPencilFill } from "react-icons/bs";
-import axios from 'axios';
+import Card from 'react-bootstrap/Card'
+import papergreen from './assets/papergreen.png';
+import paperblue from './assets/paperblue.png';
+import papergrey from './assets/papergrey.png';
+import paperorange from './assets/paperorange.png';
+import paperpink from './assets/paperpink.png';
+import paperyellow from './assets/paperyellow.png';
 
 class CharacterPost extends Component {
+
     
+
     render() {
         return (
-            <div className="characterPost">
-                <div className="icons">
-                    <a href={`/character/edit/${this.props.obj._id}`}>
-                        <BsFillPencilFill />
-                    </a>
-                </div>
-                <a href={`/character/characters/${this.props.obj._id}`}>
-                    <h3> {this.props.obj.name} </h3>
-                </a> 
-                <p> {this.props.obj.Bio} </p>
-            </div>
+            <Card className="custom-class" style={{ width: '14rem', height: '14rem', backgroundColor: this.getBackgroundColor() }}>
+                <Card.Body>
+                    <div className="icons">
+                        <a className="pencil" href={`/character/edit/${this.props.obj._id}`}>
+                            <BsFillPencilFill />
+                        </a>
+                    </div>
+                    <Card.Title>
+                        <a className="characterlink" href={`/character/characters/${this.props.obj._id}`}>
+                            <h3> {this.props.obj.name} </h3>
+                        </a>
+                    </Card.Title>
+                    <Card.Text>
+                        {this.props.obj.Bio}
+                    </Card.Text>
+                </Card.Body>
+            </Card>
         )
     }
-/*     openProfile() {
-        <CharacterProfile />
-        console.log('clicked')
-    } */
+    getBackgroundColor(props) {
+        let color;
+        if(this.props.obj.Type === 'Protagonist') {
+            color = '#cfebc0'
+        } else if (this.props.obj.Type === 'Antagonist') {
+            color = '#bfc0bc'
+        } else if (this.props.obj.Type === 'Love Interest') {
+            color = '#f5c0bd'
+        } else if (this.props.obj.Type === 'Confidant') {
+            color = '#b9ddf1'
+        } else if (this.props.obj.Type === 'Tertiary') {
+            color = '#f4ebbf'
+        } else if (this.props.obj.Type === 'Foil') {
+            color = '#f6d3bc'
+        }
+        return(color)
+    }
+    
+
 }
 
 export default CharacterPost

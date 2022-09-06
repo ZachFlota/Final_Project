@@ -4,6 +4,9 @@ let characterSchema = new Schema({
     name: {
         type: String
     },
+    Type: {
+        type: String
+    },
     Bio: {
         type: String
     },

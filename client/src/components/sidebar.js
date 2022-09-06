@@ -1,5 +1,14 @@
 import '../App.css';
 import React, { Component } from "react";
+import {
+    CDBSidebar,
+    CDBSidebarContent,
+    CDBSidebarFooter,
+    CDBSidebarHeader,
+    CDBSidebarMenu,
+    CDBSidebarMenuItem,
+  } from 'cdbreact';
+import { NavLink } from 'react-router-dom';
 import characterIcon from '../assets/characterIcon.png';
 import noteIcon from '../assets/noteIcon.png';
 import plotIcon from '../assets/plotIcon.png';
@@ -8,6 +17,8 @@ import settingIcon from '../assets/settingIcon.png';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+
+
 
 function withRouter(Component) {
     function ComponentWithRouterProp(props) {
@@ -25,6 +36,8 @@ function withRouter(Component) {
 }
 
 class Sidebar extends Component {
+ 
+
     render() {   
         const {isAuthenticated, user} = this.props.auth; 
         const authLinks = (
@@ -56,15 +69,33 @@ class Sidebar extends Component {
             </ul>
         )
         return (
-            <div className="sidebar">
-                <nav id="sidebar">
-                    <div className="sidebar-header">
-                        <h3>Tool Bar</h3>
-                    </div>    
-                    <div>
-                        {isAuthenticated ? authLinks: authLinks }
-                    </div>
-                </nav>
+            <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
+                <CDBSidebar textColor="#fff" backgroundColor="#0f3b57">
+                    <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
+                        <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
+                            Toolbox
+                        </a>
+                    </CDBSidebarHeader>
+                    <CDBSidebarContent className="sidebar-content">
+                        <CDBSidebarMenu>
+                            <NavLink  to="/workspace/tools/characters" activeClassName="activeClicked">
+                                <CDBSidebarMenuItem icon="fa-solid fa-people-arrows fa-large" >Characters</CDBSidebarMenuItem>
+                            </NavLink>
+                            <NavLink  to="/workspace/tools/settings" activeClassName="activeClicked">
+                                <CDBSidebarMenuItem icon="fa-solid fa-building fa-large">Settings</CDBSidebarMenuItem>
+                            </NavLink>
+                            <NavLink  to="/workspace/tools/plot" activeClassName="activeClicked">
+                                <CDBSidebarMenuItem icon="fa-solid fa-network-wired fa-large">Plot</CDBSidebarMenuItem>
+                            </NavLink>
+                            <NavLink  to="/workspace/tools/notes" activeClassName="activeClicked">
+                                <CDBSidebarMenuItem icon="fa-solid fa-pen-square">Notes</CDBSidebarMenuItem>
+                            </NavLink>
+                            <NavLink  to="/workspace/tools/prompts" activeClassName="activeClicked">
+                                <CDBSidebarMenuItem icon="fa-solid fa-brain">Prompts</CDBSidebarMenuItem>
+                            </NavLink>
+                        </CDBSidebarMenu>
+                    </CDBSidebarContent>
+                </CDBSidebar>
             </div>
         )
     }
