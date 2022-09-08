@@ -6,7 +6,7 @@ class SettingPost extends Component {
     
     render() {
         return (
-            <Card className="custom-class" style={{ width: '14rem', height: '14rem' }}>
+            <Card className="custom-class" style={{ width: '14rem', height: '14rem', backgroundColor: this.getBackgroundColor() }}>
                 <Card.Body>
                     <div className="icons">
                         <a className="pencil" href={`/setting/edit/${this.props.obj._id}`}>
@@ -24,6 +24,19 @@ class SettingPost extends Component {
                 </Card.Body>
             </Card>
         )
+    }
+    getBackgroundColor() {
+        let color;
+        if (this.props.obj.Type === 'Physical') {
+            color = '#b5e4a0'
+        } else if (this.props.obj.Type === 'Social') {
+            color = '#fae495'
+        } else if (this.props.obj.Type === 'Historical') {
+            color = '#b9ddf1'
+        } else if (this.props.obj.Type === 'Psychological') {
+            color = '#f8b5da'
+        }
+        return(color)
     }
 }
 

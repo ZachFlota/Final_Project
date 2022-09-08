@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Sidebar from '../../sidebar';
 
-export default class Notes extends Component {
+export default class Prompts extends Component {
 
     render() {
         return(

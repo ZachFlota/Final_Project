@@ -4,6 +4,9 @@ let settingSchema = new Schema({
     name: {
         type: String
     },
+    Type: {
+        type: String
+    },
     Geographic_location: {
         type: String
     },

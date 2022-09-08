@@ -13,6 +13,7 @@ class SettingProfile extends Component {
         super(props);
         this.state = {
             name: '',
+            Type: '',
             Geographic_location: '',
             Description: '',
             Time_period: '',
@@ -50,6 +51,10 @@ class SettingProfile extends Component {
                 <div>
                     <h4>Name:</h4>
                     <p> {this.state.name} </p>
+                </div>
+                <div>
+                    <h4>Type:</h4>
+                    <p> {this.state.Type } </p>
                 </div>
                 <div>
                     <h4>Geographic Location:</h4>

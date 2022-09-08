@@ -72,8 +72,38 @@
     overflow-y: auto;
     height: 100%;
     width: 100%;
-    
-    
+    z-index: 1;
+}
+
+.plotBox {
+    position: absolute;
+    z-index: 5;
+    margin-top: 2em;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    overflow-x: hidden;
+    overflow-y: auto;
+    gap: 2em;
+    height: 80%;
+    width: 80%
+}
+
+.writersdeskPlot {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    padding: 2em;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 70%;
+    width: 100%;
     z-index: 1;
 }
 
@@ -175,6 +205,14 @@
     background-image: url(../src/paper2.png);
     box-shadow: 10px 10px 5px;
 
+}
+
+.exposition-form {
+    display: none;
+}
+
+.expoEdit-form {
+    display: none;
 }
 
 .settingEdit-form {
@@ -326,7 +364,26 @@
 
 .card .icons a {
     text-decoration: none;
-    color: rgb(191, 138, 3);
+    color: grey;
     float: right;
 }
 
+.cardPlot.card {
+    flex-grow: 1;
+    min-width: 246px;
+    max-width: 425px;
+}
+
+.plotButton {
+    background: none;
+    color: grey;
+    border: none;
+    float: right;
+    
+}
+
+.plotButtonDiv {
+    padding: 2em;
+
+    
+}

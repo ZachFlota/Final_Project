@@ -19,6 +19,9 @@ import Settings from './components/tools/settings/settings';
 import SettingProfile from "./components/tools/settings/settingProfile";
 import CharacterEdit from "./components/tools/characters/characterEdit";
 import SettingEdit from "./components/tools/settings/settingEdit";
+import Plot from "./components/tools/plot/plot";
+import Notes from "./components/tools/notes/notes";
+import Prompts from "./components/tools/prompts/prompts";
 import deskLg from '../src/assets/deskLg.png'
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -63,6 +66,9 @@ function App() {
               <Route path="/setting/settings/:id" element={<SettingProfile />} />
               <Route path="/character/edit/:id" element={<CharacterEdit />} />
               <Route path="/setting/edit/:id" element={<SettingEdit />} />
+              <Route path="/workspace/tools/plot" element={<Plot />} />
+              <Route path="/workspace/tools/notes" element={<Notes />} />
+              <Route path="/workspace/tools/prompts" element={<Prompts />} />
             </Routes>
           </div>
         </div>

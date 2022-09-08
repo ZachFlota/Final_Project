@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { BsFillPencilFill } from "react-icons/bs";
 import Card from 'react-bootstrap/Card'
-import papergreen from './assets/papergreen.png';
-import paperblue from './assets/paperblue.png';
-import papergrey from './assets/papergrey.png';
-import paperorange from './assets/paperorange.png';
-import paperpink from './assets/paperpink.png';
-import paperyellow from './assets/paperyellow.png';
+
 
 class CharacterPost extends Component {
 
@@ -33,20 +28,20 @@ class CharacterPost extends Component {
             </Card>
         )
     }
-    getBackgroundColor(props) {
+    getBackgroundColor() {
         let color;
-        if(this.props.obj.Type === 'Protagonist') {
-            color = '#cfebc0'
+        if (this.props.obj.Type === 'Protagonist') {
+            color = '#b5e4a0'
         } else if (this.props.obj.Type === 'Antagonist') {
-            color = '#bfc0bc'
+            color = '#fb8982'
         } else if (this.props.obj.Type === 'Love Interest') {
-            color = '#f5c0bd'
+            color = '#f8b5da'
         } else if (this.props.obj.Type === 'Confidant') {
             color = '#b9ddf1'
         } else if (this.props.obj.Type === 'Tertiary') {
-            color = '#f4ebbf'
+            color = '#fae495'
         } else if (this.props.obj.Type === 'Foil') {
-            color = '#f6d3bc'
+            color = '#f5aa80 '
         }
         return(color)
     }

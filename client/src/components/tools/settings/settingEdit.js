@@ -15,6 +15,7 @@ class SettingEdit extends Component {
     constructor(props) {
         super(props)
         this.onChangeSettingName = this.onChangeSettingName.bind(this);
+        this.onChangeSettingType = this.onChangeSettingType.bind(this);
         this.onChangeSettingGeographic_location = this.onChangeSettingGeographic_location.bind(this);
         this.onChangeSettingDescription = this.onChangeSettingDescription.bind(this);
         this.onChangeSettingTime_period = this.onChangeSettingTime_period.bind(this);
@@ -24,6 +25,7 @@ class SettingEdit extends Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.state = {
             name: '',
+            Type: '',
             Geographic_location: '',
             Description: '',
             Time_period: '',
@@ -34,6 +36,9 @@ class SettingEdit extends Component {
     }
     onChangeSettingName(e) {
         this.setState({ name: e.target.value})
+    }
+    onChangeSettingType(e) {
+        this.setState({ Type: e.target.value })
     }
     onChangeSettingGeographic_location(e) {
         this.setState({ Geographic_location: e.target.value })
@@ -57,6 +62,7 @@ class SettingEdit extends Component {
         e.preventDefault()
         const settingObject = {
             name: this.state.name,
+            Type: this.state.Type,
             Geographic_location: this.state.Geographic_location,
             Description: this.state.Description,
             Time_period: this.state.Time_period,
@@ -70,7 +76,7 @@ class SettingEdit extends Component {
             }).catch((error) => {
                 console.log(error)
             });
-        this.setState({ name: '', Geographic_location: '', Description: '', Time_period: '', Characteristics: '', Weather: '', History: '' })
+        this.setState({ name: '', Type: '', Geographic_location: '', Description: '', Time_period: '', Characteristics: '', Weather: '', History: '' })
         window.location.replace('http://localhost:3000/workspace/tools/settings')
     }
 
@@ -108,6 +114,15 @@ class SettingEdit extends Component {
                             <Form.Group className="mb-3" controlId="name" >
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control type="text" value={this.state.name} onChange={this.onChangeSettingName} />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="type">
+                                <Form.Select value={this.state.Type} onChange={this.onChangeSettingType}>
+                                    <option>Select Setting Type</option>
+                                    <option value="Physical">Physical</option>
+                                    <option value="Social">Social</option>
+                                    <option value="Historical">Historical</option>
+                                    <option value="Psychological">Psychological</option>
+                                </Form.Select>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="Geographic_location" >
                                 <Form.Label>Geographic Location</Form.Label>

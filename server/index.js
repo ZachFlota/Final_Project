@@ -9,6 +9,7 @@ const userRoute = require('../server/routes/user.routes')
 const authRoute = require('../server/routes/authentication.routes')
 const characterRoute = require('../server/routes/character.routes')
 const settingRoute = require('../server/routes/setting.routes')
+const plotRoute = require('../server/routes/plot.routes')
 const createError = require('http-errors');
 
 
@@ -35,6 +36,7 @@ app.use('/users', userRoute)
 app.use('/authentication', authRoute)
 app.use('/character', characterRoute )
 app.use('/setting', settingRoute)
+app.use('/plot', plotRoute)
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
     console.log('Connected to port ' + port)
