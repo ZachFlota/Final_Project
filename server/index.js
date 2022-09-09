@@ -12,10 +12,10 @@ const settingRoute = require('../server/routes/setting.routes')
 const plotRoute = require('../server/routes/plot.routes')
 const createError = require('http-errors');
 
-
-
+const DB_URL = process.env.DB_URL || 
+'mongodb://localhost/nodeapp'
 mongoose
-    .connect(process.env.DB_URL, { useNewUrlParser: true })
+    .connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true, })
     .then((x) => {
         console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
     })
@@ -51,6 +51,10 @@ app.use(function (err, req, res, next) {
     res.status(err.statusCode).send(err.message);
 });
 
+// serve static front end in production mode
+if (process.env.NODE_ENV === "production") {
+    require(app.use(express.static(path.join(__dirname, 'client', 'build'))));
+}
 
 // Have Node serve the files for our built React app
 //app.use(express.static(path.resolve(__dirname, '../client/build')));
