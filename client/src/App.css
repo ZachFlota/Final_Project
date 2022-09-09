@@ -211,8 +211,48 @@
     display: none;
 }
 
+.conflict-form {
+    display: none;
+}
+
+.rising-form {
+    display: none;
+}
+
+.climax-form {
+    display: none;
+}
+
+.fallingAction-form {
+    display: none;
+}
+
+.resolution-form {
+    display: none;
+}
+
 .expoEdit-form {
     display: none;
+}
+
+.conflictEdit-form {
+    display: none;
+}
+
+.risingEdit-form {
+    display: none;
+}
+
+.climaxEdit-form {
+    display: none;
+}
+
+.fallingActionEdit-form {
+    display: none;
+}
+
+.resolutionEdit-form {
+    display: none; 
 }
 
 .settingEdit-form {
@@ -374,6 +414,16 @@
     max-width: 425px;
 }
 
+.register.card {
+    
+    top: 30%;
+    margin: 4em;
+    width: 30em;
+    
+    padding: 2em;
+   
+}
+
 .plotButton {
     background: none;
     color: grey;
@@ -386,4 +436,14 @@
     padding: 2em;
 
     
+}
+
+.constructionImg {
+    max-width: min-content;
+    
+}
+
+.sign {
+    max-width: min-content;
+    margin: center;
 }

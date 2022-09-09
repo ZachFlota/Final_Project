@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/authentication';
 import classnames from 'classnames';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card'
 import { Navigate, Navigation } from 'react-router-dom';
 
 
@@ -55,39 +58,39 @@ class LogIn extends Component {
     render() {
         const {errors} = this.state;
         return (
-            <div className="loginForm">
-                <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <h3>Login</h3>
-                    </div>
-                    <div className="form-group">
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            name="email"
-                            value={ this.state.email }
-                            onChange={ this.handleInputChange }
-                            className={classnames('form-control form-control-lg', {'is-invalid': errors.email})}
-                        />
-                        {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
-                    </div>
-                    <div className="form-group">
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            name="password"
-                            value={ this.state.password }
-                            onChange={ this.handleInputChange }
-                            className={classnames('form-control form-control-lg', {'is-invalid': errors.password})}
-                        />
-                        {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
-                    </div> 
-                    <div className="form-group">                   
-                        <button type="submit" className="btn btn-primary">
-                            Login
-                        </button>
-                    </div>
-                </form>
+            <div className="Workspace">
+                <Card className="register">
+                    <Form onSubmit={this.handleSubmit}>
+                        <div>
+                            <h3>Login</h3>
+                        </div>
+                        <Form.Group className="mb-3" controlId="email">
+                            <Form.Control
+                                type="email"
+                                placeholder="Email"
+                                name="email"
+                                value={ this.state.email }
+                                onChange={ this.handleInputChange }
+                                className={classnames('form-control form-control-lg', {'is-invalid': errors.email})}
+                            />
+                            {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="password">
+                            <Form.Control
+                                type="password"
+                                placeholder="Password"
+                                name="password"
+                                value={ this.state.password }
+                                onChange={ this.handleInputChange }
+                                className={classnames('form-control form-control-lg', {'is-invalid': errors.password})}
+                            />
+                            {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
+                        </Form.Group> 
+                        <Form.Group className="mb-3">                   
+                            <Button variant="success" type="submit">Login</Button>
+                        </Form.Group>
+                    </Form>
+                </Card>
             </div>
         )
     }

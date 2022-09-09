@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 let conflictSchema = new Schema({
+    type: {
+        type: String
+    },
     content: {
         type: String 
     },

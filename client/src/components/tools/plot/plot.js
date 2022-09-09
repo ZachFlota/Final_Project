@@ -7,6 +7,11 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import axios from 'axios';
 import Sidebar from '../../sidebar';
 import Exposition from './exposition';
+import Conflict from './conflict';
+import RisingAction from './risingAction';
+import Climax from './climax';
+import FallingAction from './fallingAction';
+import Resolution from './resolution';
 
 export default class Plot extends Component {
 
@@ -33,15 +38,7 @@ export default class Plot extends Component {
                                     <Accordian.Item eventKey="1">
                                         <Accordian.Header>Conflict</Accordian.Header>
                                         <Accordian.Body>
-                                            <div>
-                                                Conflict details go here
-                                            </div>
-                                            <div className="d-grid gap-2">
-                                                <ButtonGroup>
-                                                    <Button variant="secondary">Add</Button>
-                                                    <Button variant="secondary">Edit</Button>
-                                                </ButtonGroup>
-                                            </div>
+                                            <Conflict />
                                         </Accordian.Body>
                                     </Accordian.Item>
                                 </Accordian>
@@ -55,15 +52,7 @@ export default class Plot extends Component {
                                     <Accordian.Item eventKey="0">
                                         <Accordian.Header>Rising Action</Accordian.Header>
                                         <Accordian.Body>
-                                            <div>    
-                                                Rising Action details go here
-                                            </div>
-                                            <div className="d-grid gap-2">
-                                                <ButtonGroup>
-                                                    <Button variant="secondary">Add</Button>
-                                                    <Button variant="secondary">Edit</Button>
-                                                </ButtonGroup>
-                                            </div>
+                                            <RisingAction />
                                         </Accordian.Body>
                                     </Accordian.Item>
                                 </Accordian>
@@ -71,15 +60,7 @@ export default class Plot extends Component {
                                     <Accordian.Item eventKey="1">
                                         <Accordian.Header>Climax</Accordian.Header>
                                         <Accordian.Body>
-                                            <div>
-                                                Climax details go here
-                                            </div>    
-                                            <div className="d-grid gap-2">
-                                                <ButtonGroup>
-                                                    <Button variant="secondary">Add</Button>
-                                                    <Button variant="secondary">Edit</Button>
-                                                </ButtonGroup>
-                                            </div>
+                                            <Climax />
                                         </Accordian.Body>
                                     </Accordian.Item>
                                 </Accordian>
@@ -93,15 +74,7 @@ export default class Plot extends Component {
                                     <Accordian.Item eventKey="0">
                                         <Accordian.Header>Falling Action</Accordian.Header>
                                         <Accordian.Body>
-                                            <div>
-                                                Falling Action details go here
-                                            </div>
-                                            <div className="d-grid gap-2">
-                                                <ButtonGroup>
-                                                    <Button variant="secondary">Add</Button>
-                                                    <Button variant="secondary">Edit</Button>
-                                                </ButtonGroup>
-                                            </div>
+                                            <FallingAction />
                                         </Accordian.Body>
                                     </Accordian.Item>
                                 </Accordian>
@@ -109,15 +82,7 @@ export default class Plot extends Component {
                                     <Accordian.Item eventKey="1">
                                         <Accordian.Header>Resolution</Accordian.Header>
                                         <Accordian.Body>
-                                            <div>
-                                                Resolution details go here
-                                            </div>
-                                            <div className="d-grid gap-2">
-                                                <ButtonGroup>
-                                                    <Button variant="secondary">Add</Button>
-                                                    <Button variant="secondary">Edit</Button>
-                                                </ButtonGroup>
-                                            </div>
+                                           <Resolution />
                                         </Accordian.Body>
                                     </Accordian.Item>
                                 </Accordian>
