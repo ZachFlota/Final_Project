@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Link, Routes, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Sidebar from '../../sidebar'
 import Writersdesk from '../../writersdesk'
@@ -104,7 +105,7 @@ class SettingEdit extends Component {
                     <Sidebar />
                 </div>
                 <div className="writersdesk">
-                    <div className="settingEdit-form" id="settingEditForm">
+                    <Card className="settingEdit-form" id="settingEditForm">
                         <div className="xbutton">   
                             <a href="/workspace/tools/settings" >
                                 <BsXLg />
@@ -151,7 +152,7 @@ class SettingEdit extends Component {
                             <Button variant="success" type="submit">Edit Setting</Button>
                             <Button variant="danger" type="button" onClick={this.deleteSetting}>Delete Setting</Button>
                         </Form>
-                    </div>
+                    </Card>
                 </div>
             </div>            
         )

@@ -3,6 +3,7 @@ import { Route, Link, Routes, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Sidebar from '../../sidebar'
 import { BsXLg } from "react-icons/bs";
+import Card from 'react-bootstrap/Card';
 
 function withParams(Component) {
     return (props) => <Component {...props} params={useParams()} />;
@@ -42,7 +43,7 @@ class CharacterProfile extends Component {
 
     characterProfileBox() {
         return (
-            <div className="characterEdit-form">
+            <Card className="characterEdit-form">
                 <div className="xbutton">   
                     <a href="/workspace/tools/characters" >
                         <BsXLg />
@@ -80,7 +81,7 @@ class CharacterProfile extends Component {
                     <h4>Habbits:</h4>
                     <p> {this.state.Habbits} </p>
                 </div>
-            </div>
+            </Card>
         )
     }
 

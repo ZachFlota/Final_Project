@@ -89,10 +89,15 @@
   },
   "devDependencies": {},
   "scripts": {
-    "dev": "nodemon index",
-    "start": "node index",
+    "start": "node app",
+    "server": "npm start --prefix server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "npm run build --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ZachFlota/Final_Project.git"

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 import Sidebar from '../../sidebar';
 import CharacterIndex from './characterIndex';
+import { BsXLg } from "react-icons/bs";
 
 
 
@@ -87,8 +89,11 @@ export default class Characters extends Component {
                         <input id="open-button" type="button" value="New Character" className="btn btn-primary btn-block" onClick={this.openForm} />
                     </div>
                     <CharacterIndex />
-                    <div className="character-form" id="characterForm">
+                    <Card className="character-form" id="characterForm">
                         <Form onSubmit={ this.onSubmit }>
+                            <Form.Group className="mb-3">
+                                <Button className="xbutton" variant="none" type="button" onClick={this.closeForm} ><BsXLg/></Button>
+                            </Form.Group>
                             <Form.Group className="mb-3" controlId="name">
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control type="text" value={this.state.name} onChange={this.onChangeCharacterName} />
@@ -129,9 +134,9 @@ export default class Characters extends Component {
                                 <Form.Control as="textarea" rows={3} value={this.state.Habbits} onChange={this.onChangeCharacterHabbits} />
                             </Form.Group>
                             <Button variant="success" type="submit">Create Character</Button>
-                            <Button variant="danger" type="button" onClick={this.closeForm} >Close</Button>
+                            
                         </Form>
-                    </div>
+                    </Card>
                 </div>
             </div>
         )

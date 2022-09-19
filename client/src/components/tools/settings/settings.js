@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 import Sidebar from '../../sidebar';
 import SettingIndex from './settingIndex';
+import { BsXLg } from "react-icons/bs";
+
 
 
 export default class Settings extends Component {
@@ -85,8 +88,11 @@ export default class Settings extends Component {
                         <input id="open-button" type="button" value="New Setting" className="btn btn-primary btn-block" onClick={this.openForm} />
                     </div>
                     <SettingIndex />
-                    <div className="setting-form" id="settingForm">
+                    <Card className="setting-form" id="settingForm">
                         <Form onSubmit={ this.onSubmit }>
+                            <Form.Group className="mb-3">
+                            <Button variant="none" type="button" onClick={this.closeForm}><BsXLg/></Button>
+                            </Form.Group>
                             <Form.Group className="mb-3" controlId="name" >
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control type="text" value={this.state.name} onChange={this.onChangeSettingName} />
@@ -125,9 +131,9 @@ export default class Settings extends Component {
                                 <Form.Control as="textarea" name="History" value={this.state.History} onChange={this.onChangeSettingHistory} />
                             </Form.Group>
                             <Button variant="success" type="submit">Create Setting</Button>
-                            <Button variant="danger" type="button" onClick={this.closeForm}>Close</Button>
+                            
                         </Form>
-                    </div>
+                    </Card>
                 </div>
             </div>
         )

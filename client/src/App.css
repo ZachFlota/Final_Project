@@ -193,13 +193,13 @@
 
 }
 
-.characterEdit-form {
-    position: absolute;
-    margin: auto;
+.characterEdit-form.card {
+    
+    margin: 1em;
     padding: 2em;
-    width: 90%;
-    height: 85%;
-    overflow-x: auto;
+    
+    max-height: 570px;
+    overflow-x: hidden;
     overflow-y: auto;
     z-index: 9;
     background-image: url(../src/paper2.png);
@@ -255,13 +255,12 @@
     display: none; 
 }
 
-.settingEdit-form {
-    position: absolute;
-    margin: auto;
+.settingEdit-form.card {
+    margin: 1em;
     padding: 2em;
-    width: 90%;
-    height: 85%;
-    overflow-x: auto;
+    
+    max-height: 570px;
+    overflow-x: hidden;
     overflow-y: auto;
     z-index: 9;
     background-image: url(../src/paper2.png);
@@ -412,6 +411,36 @@
     flex-grow: 1;
     min-width: 246px;
     max-width: 425px;
+}
+
+.character-form.card {
+    
+    display: none;
+    
+    margin: 1em;
+    padding: 2em;
+    max-height: 570px;
+    
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 9;
+    background-image: url(../src/paper2.png);
+    box-shadow: 10px 10px 5px;
+    
+}
+
+.setting-form.card {
+    display: none;
+    
+    margin: 1em;
+    padding: 2em;
+    max-height: 570px;
+    
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 9;
+    background-image: url(../src/paper2.png);
+    box-shadow: 10px 10px 5px;
 }
 
 .register.card {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link, Routes, useParams } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Sidebar from '../../sidebar'
@@ -108,7 +109,7 @@ class CharacterEdit extends Component {
                     <Sidebar />
                 </div>
                 <div className="writersdesk">
-                    <div className="characterEdit-form" id="characterEditForm">
+                    <Card className="characterEdit-form" id="characterEditForm">
                         <div className="xbutton">   
                             <a href="/workspace/tools/characters" >
                                 <BsXLg />
@@ -157,7 +158,7 @@ class CharacterEdit extends Component {
                             <Button variant="success" type="submit">Edit Character</Button>
                             <Button variant="danger" type="button" onClick={this.deleteCharacter}>Delete Character</Button>
                         </Form>
-                    </div>
+                    </Card>
                 </div>                
             </div>
         )

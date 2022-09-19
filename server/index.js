@@ -56,8 +56,8 @@ if (process.env.NODE_ENV === "production") {
     require(app.use(express.static(path.join(__dirname, 'client', 'build'))));
 }
 
-// Have Node serve the files for our built React app
-//app.use(express.static(path.resolve(__dirname, '../client/build')));
+//Have Node serve the files for our built React app
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Handle GET requests to /api route
 app.get("/api", (req, res) => {
@@ -69,7 +69,4 @@ app.get("/api", (req, res) => {
 //    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 //});
 
-// Listening on PORT
-//app.listen(PORT, () => {
-//    console.log(`Server listening on ${PORT}`);
-//   });
+//

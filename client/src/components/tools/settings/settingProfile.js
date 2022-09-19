@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link, Routes, useParams } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 import Sidebar from '../../sidebar'
 import { BsXLg } from "react-icons/bs";
@@ -42,7 +43,7 @@ class SettingProfile extends Component {
 
     settingProfileBox() {
         return (
-            <div className="settingEdit-form">
+            <Card className="settingEdit-form">
                 <div className="xbutton">
                     <a href="/workspace/tools/settings" >
                         <BsXLg />
@@ -80,7 +81,7 @@ class SettingProfile extends Component {
                     <h4>History:</h4>
                     <p> {this.state.History} </p>
                 </div>
-            </div>
+            </Card>
         )
     }
 
